@@ -1,0 +1,39 @@
+body {
+  font-family: 'Museo Sans Cyrl 300';
+  font-size: 16px;
+  line-height: 22px;
+  color: #000;
+}
+// Оболочка ===================================================================
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow: clip; // clip - если используется в проекте position: sticky
+}
+
+.container {
+  max-width: 1180px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.btn-pulse {
+  animation: pulse 1s infinite;
+}
+
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(253, 60, 118, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 114, 0, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 114, 0, 0);
+  }
+}

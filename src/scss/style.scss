@@ -1,0 +1,938 @@
+@use "sass:math";
+
+// Подключение шрифтов локально из папки "./src/fonts" =======================================================================================================================
+@import "config/fonts";
+
+// Подключение sass функций и миксинов и рассширений стилей =======================================================================================================================
+// @import 'config/functions';
+// @import 'config/mixins';
+// @import 'config/patternSelectors';
+
+// Подключение переменных =======================================================================================================================
+@import "config/vars";
+
+// Обнуление =======================================================================================================================
+@import "config/reset";
+
+/* =======================================================================================================================
+* Библиотеки
+* раскомментировать для использования 
+*/
+// @import 'libs/aos';
+// @import 'libs/swiper';
+
+// Подлючение кастомного скрола для всего сайта =======================================================================================================================
+@import "config/scrollbar";
+
+//Общие параметры, шаблоны(заготовки) и вспомагательные классы =======================================================================================================================
+@import "config/base";
+
+// // БЕМ блоки используемые во всё проекте =======================================================================================================================
+// @import 'config/common';
+
+// Подключение стилей отдельных блоков и секций =======================================================================================================================
+// @import 'layout/header';
+// @import 'layout/footer';
+
+.intro {
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: flex-end;
+  height: 100vh;
+  padding: 85px 160px;
+  background: url(../images/intro.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.intro__media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+  }
+}
+
+.intro__content {
+  z-index: 10;
+}
+
+.intro__title {
+  color: #fff;
+  font-family: "Museo Sans Cyrl 300";
+  font-weight: 300;
+  font-size: 64px;
+  line-height: 87px;
+}
+
+.home-main_video {
+  display: block;
+  margin: 100px auto;
+  max-width: 1150px;
+  position: relative;
+}
+
+.home-main_video-img,
+.home-main_video:after {
+  border-radius: 15px;
+  max-width: 1140px;
+  width: 100%;
+}
+
+.home-main_video:after {
+  background: linear-gradient(
+    0deg,
+    rgba(34, 32, 32, 0.6),
+    rgba(34, 32, 32, 0.6)
+  );
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.home-main_video-inner {
+  right: 64px;
+  position: absolute;
+  top: 80px;
+  z-index: 1;
+  text-align: right;
+}
+
+.home-main_video-txt {
+  font-family: "Museo Sans Cyrl 700";
+  color: #fff;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 46px;
+  margin: 0 0 20px;
+}
+
+.video_text_sphere {
+  color: #fff;
+  font-size: 20px;
+  line-height: 26px;
+  margin: 19px 0;
+  max-width: 423px;
+  span {
+    font-family: "Museo Sans Cyrl 700";
+    font-weight: 700;
+  }
+}
+
+.home-main_video-play {
+  color: #27b2ed;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 21px;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.home-main_video-play:after {
+  content: "";
+  height: 32px;
+  position: absolute;
+  left: -45px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+}
+
+.home-main_video-play:after {
+  background: url(../images/icon-play.png) no-repeat 50% / contain;
+}
+
+.sets_banner-inner {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin: 0 auto 70px;
+  position: relative;
+}
+
+.sets_banner-content {
+  max-width: 645px;
+  padding: 60px 90px;
+  width: 100%;
+}
+
+.sets_banner-grey {
+  border: 3px solid #e2e6e7;
+  border-radius: 15px;
+}
+
+.sets_banner-img {
+  padding: 10px;
+  max-width: 460px;
+  img {
+    max-width: 100%;
+  }
+}
+
+.sets_banner-suptitle {
+  font-family: "Museo Sans Cyrl 500";
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 48px;
+  margin: 0 0 16px;
+}
+
+.sets_banner-title {
+  font-family: "Museo Sans Cyrl 900";
+  font-weight: 900;
+  font-size: 65px;
+  line-height: 72px;
+  margin: 0 0 16px;
+}
+
+.sets_banner-subtitle {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.base_price-box {
+  align-items: center;
+  display: flex;
+  margin: 0 0 11px;
+  margin-top: 70px;
+}
+
+.base_price-old {
+  color: #979797;
+  font-family: "Museo Sans Cyrl 500";
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  -webkit-text-decoration-line: line-through;
+  text-decoration-line: line-through;
+}
+
+.base_price-profit {
+  border: thin solid #4bb24e;
+  color: #4bb24e;
+  font-family: "Museo Sans Cyrl 500";
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0 0 0 32px;
+  padding: 6px 10px;
+  border-radius: 15px;
+}
+
+.banner-main_price-summ {
+  color: #222020;
+  font-family: "Museo Sans Cyrl 500";
+  font-size: 45px;
+  line-height: 50px;
+  font-weight: 500;
+  margin: 0 0 24px;
+}
+
+.banner-main_price-btns {
+  align-items: center;
+  display: flex;
+}
+
+.btn-main_price-pink {
+  background: #fd3c76;
+  border: 0;
+  color: #fff;
+  margin: 0 10px 0 0;
+}
+.btn-main_price-borderpink {
+  border: 3px solid #fd3c76;
+  color: #fd3c76;
+
+  margin: 0 10px 0 0;
+}
+
+.buy-btn {
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: "Museo Sans Cyrl 500";
+  line-height: 56px;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 0;
+  text-align: center;
+  transition: all 0.2s linear;
+  width: 170px;
+}
+
+.black-banner {
+  background-position: 0 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #000;
+  height: auto;
+  max-height: none;
+  padding: 100px 0;
+  .container {
+    display: flex;
+    height: 100%;
+    justify-content: flex-end;
+  }
+  &_content {
+    align-items: flex-start;
+    width: 55%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+  }
+}
+
+.black-banner_title {
+  font-family: "Museo Sans Cyrl 700";
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 54px;
+  margin-bottom: 40px;
+}
+.black-banner_description {
+  font-family: "Museo Sans Cyrl 500";
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+
+  span {
+    font-family: "Museo Sans Cyrl 700";
+    font-weight: 700;
+  }
+}
+
+.education {
+  background-image: url(../images/education.jpg);
+}
+
+.training {
+  background-image: url(../images/training.jpg);
+}
+
+.logistics {
+  background-image: url(../images/logistics.jpg);
+}
+.accreditation-banner {
+  background-image: url(../images/accreditation.jpg);
+}
+
+.directions {
+  padding: 55px 0;
+  background-color: #f3f6ff;
+}
+
+.directions-title {
+  font-family: "Museo Sans Cyrl 700";
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 54px;
+  margin-bottom: 40px;
+}
+
+.directions_wrap {
+  max-width: 680px;
+}
+
+.directions_item {
+  position: relative;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.directions_item_header {
+  position: relative;
+}
+
+.directions_item.show .directions_item_title {
+  background: #ffffff;
+  color: #000;
+}
+
+.directions_item_title {
+  color: #000000;
+  font-size: 18px;
+
+  cursor: pointer;
+  padding: 20px 50px 20px 20px;
+  border-radius: 9px;
+  -webkit-box-shadow: 0 0 24px 0 #11141814;
+  box-shadow: 0 0 24px 0 #11141814;
+  background-color: #ffffff;
+}
+
+.directions_item_info {
+  display: none;
+}
+
+.directions_item_info .list {
+  padding: 30px;
+}
+
+.directions_item_media {
+  cursor: pointer;
+
+  position: absolute;
+  right: 64px;
+  top: 29%;
+  z-index: 2;
+}
+
+.directions_item_media:before,
+.directions_item_media:after {
+  background: #000;
+  content: "";
+  height: 4px;
+  left: 7px;
+  border-radius: 1.5px;
+  position: absolute;
+  top: 13px;
+  width: 16px;
+  -webkit-transition: -webkit-transform 500ms ease;
+  transition: -webkit-transform 500ms ease;
+  -o-transition: transform 500ms ease;
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease;
+}
+
+.directions_item_media:after {
+  transform-origin: center;
+}
+
+.directions_item .directions_item_media:after {
+  transform: rotate(220deg);
+  right: 15px;
+}
+
+.directions_item .directions_item_media:before {
+  transform: rotate(140deg);
+  left: 16px;
+}
+
+.directions_item.show .directions_item_media:after {
+  transform: rotate(140deg);
+  right: 15px;
+}
+
+.directions_item.show .directions_item_media:before {
+  transform: rotate(220deg);
+  left: 16px;
+}
+
+.scroll-vertical {
+  padding: 100px 0;
+}
+
+.scroll-vertical_inner {
+  display: flex;
+}
+
+.bold_txt {
+  font-family: "Museo Sans Cyrl 700";
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 38px;
+}
+
+.scroll-vertical_images {
+  align-self: flex-start;
+  height: 660px;
+  margin: 0 0 0 30px;
+  max-width: 680px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 2vw;
+  width: 100%;
+}
+
+.scroll-vertical_title {
+  font-family: "Museo Sans Cyrl 700";
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 54px;
+  margin-bottom: 40px;
+}
+
+.scroll-vertical_txt {
+  font-size: 20px;
+}
+
+.top_details {
+  font-family: Open Sans, sans-serif;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px;
+  margin-top: 12px;
+}
+
+.scroll-vertical_img.active {
+  opacity: 1;
+  transition: all 0.3s linear;
+}
+
+.scroll-vertical_img {
+  border-radius: 15px;
+  max-width: 680px;
+  opacity: 0;
+  position: absolute;
+  transition: all 0.3s linear;
+  width: 100%;
+}
+
+.scroll-vertical_content {
+  margin: 300px 0 100px;
+  max-width: 380px;
+  width: 100%;
+}
+
+.scroll-vertical_img-mob {
+  border-radius: 15px;
+  display: none;
+}
+
+.scroll-vertical_title-mob {
+  display: none;
+}
+
+.mindray-video {
+  padding: 100px 0;
+}
+
+.mindray-video_title {
+  margin-bottom: 40px;
+}
+
+.mindray-video_title {
+  font-family: "Museo Sans Cyrl 700";
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 54px;
+}
+
+.mindray-video_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.mindray-video_inner-vid {
+  width: 400px;
+  margin-right: 100px;
+  border-radius: 15px;
+}
+
+.list--mindray {
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 390px;
+}
+
+.list--mindray {
+  li {
+    margin-bottom: 10px;
+  }
+}
+
+.mindray-sensors_title {
+  font-family: "Museo Sans Cyrl 700";
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 54px;
+  margin-bottom: 40px;
+}
+
+.mindray-sensors_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.mindray-sensors_inner-img img {
+  max-width: 500px;
+  border-radius: 15px;
+}
+
+.mindray-sensors_inner {
+  padding-left: 30px;
+}
+
+.mindray-sensors_item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.mindray-sensors_inner-image {
+  width: 100px;
+  border-radius: 15px;
+}
+
+.mindray-sensors_item-text {
+  margin-left: 10px;
+}
+
+.mindray-sensors_inner-leftimage {
+  width: 400px;
+}
+
+.how-training {
+  padding: 100px 0;
+}
+
+.how-trainig_title {
+  font-family: "Museo Sans Cyrl 700";
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 54px;
+  margin-bottom: 40px;
+}
+
+.how-training .container {
+  max-width: 1024px;
+}
+
+.how-trainig_list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.how-trainig_list li {
+  position: relative;
+  margin-bottom: 40px;
+  margin-right: 20px;
+  padding-left: 50px;
+  width: 33.33333%;
+}
+
+.how-trainig_list li img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.slider-training_img {
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+  height: 60px;
+}
+
+.slider-training {
+  position: relative;
+  margin-bottom: 20px;
+  img {
+    border-radius: 15px;
+    max-width: 100%;
+  }
+}
+
+.slider-training_img {
+  margin: 0 10px;
+}
+
+.slider-training_left {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: -25px;
+  z-index: 10;
+  transform: translate(0, -50%);
+}
+.slider-training_right {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 10;
+  transform: translate(0, -50%);
+}
+
+.our-teachers .container {
+  align-items: center;
+}
+
+.our-teachers__images {
+  width: 500px;
+  overflow: hidden;
+}
+
+.our-teachers-content {
+  padding-right: 50px;
+}
+
+.accreditation {
+  padding: 100px 0;
+}
+
+.accreditation_list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.accreditation_list li {
+  position: relative;
+  margin-bottom: 40px;
+  margin-right: 20px;
+  padding-left: 50px;
+  width: 33.33333%;
+}
+
+.accreditation_list li img {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  z-index: 1;
+}
+
+.where-training {
+  background-color: #000;
+  color: #fff;
+}
+
+.where-training_title {
+  font-size: 45px;
+  font-family: "Museo Sans Cyrl 700";
+  font-weight: 700;
+  line-height: 54px;
+  margin-bottom: 40px;
+}
+
+.where-training {
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #000;
+  height: auto;
+  max-height: none;
+  padding: 100px 0;
+  background-image: url(../images/map.png);
+}
+
+.where-training_item {
+  max-width: 600px;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.where-training_text {
+  font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+margin-bottom: 40px;
+
+}
+
+.where-trainig_icons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.where-training_icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.where-trainig_name {
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 992px) {
+  .intro {
+    padding: 60px 20px;
+  }
+  .intro__title {
+    font-size: 30px;
+    line-height: 1.5;
+  }
+
+  .home-main_video-inner {
+    right: 12px;
+    top: 12px;
+  }
+
+  .home-main_video-txt {
+    font-size: 19px;
+    line-height: 26px;
+  }
+  .video_text_sphere {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .home-main_video-play {
+    font-size: 14px;
+  }
+
+  .sets_banner-inner {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .sets_banner-content {
+    padding: 10px;
+  }
+
+  .sets_banner-suptitle {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .sets_banner-title {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .sets_banner-subtitle {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .base_price-box {
+    margin-top: 30px;
+  }
+
+  .base_price-old {
+    font-size: 20px;
+  }
+
+  .base_price-profit {
+    margin: 0 0 0 6px;
+  }
+
+  .banner-main_price-summ {
+    color: #222020;
+    font-family: "Museo Sans Cyrl 500";
+    font-size: 45px;
+    line-height: 50px;
+    font-weight: 500;
+    margin: 0 0 24px;
+  }
+  .black-banner {
+    &_content {
+      padding-top: 165px;
+      width: 100%;
+    }
+    .container {
+      justify-content: flex-start;
+    }
+  }
+  .black-banner_title {
+    font-size: 28px;
+    line-height: 32px;
+    margin-bottom: 30px;
+  }
+  .how-trainig_list li {
+    width: 100%;
+  }
+  .mindray-video_wrapper {
+    flex-direction: column;
+  }
+
+  .mindray-video_inner {
+    margin-bottom: 20px;
+  }
+  .mindray-video_inner-vid {
+    margin-right: 0;
+  }
+
+  .mindray-sensors_wrapper {
+    flex-direction: column;
+  }
+  .mindray-sensors_inner {
+    padding-left: 0;
+    margin-top: 30px;
+  }
+
+  .scroll-vertical_img-mob {
+    display: block;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  .scroll-vertical_images {
+    display: none;
+  }
+
+  .scroll-vertical_content {
+    margin: 0 0 50px 0;
+    max-width: 340px;
+  }
+  .scroll-vertical_inner {
+    justify-content: center;
+  }
+  .scroll-vertical_title-mob {
+    display: block;
+    font-family: "Museo Sans Cyrl 700";
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 54px;
+    margin-bottom: 40px;
+  }
+
+  .black-banner {
+    .container {
+      flex-direction: column;
+    }
+  }
+  .our-teachers-content {
+    padding-top: 20px;
+    padding-right: 0;
+    margin-bottom: 40px;
+  }
+
+  .home-main_video-img {
+    min-height: 270px;
+  }
+
+  .accreditation_list li {
+    width: 100%;
+  }
+
+  .where-training_title {
+    font-size: 28px;
+    line-height: 33px;
+  }
+
+ .where-trainig_icons {
+  flex-wrap: wrap;
+ }
+}
